@@ -1,7 +1,6 @@
 package com.nosbielc.crawler.loterias.core.megasena.usecase;
 
-import com.nosbielc.crawler.loterias.core.megasena.MegaSena;
-import com.nosbielc.crawler.loterias.core.megasena.exception.SaveResultMegaSenaException;
+import com.nosbielc.crawler.loterias.core.megasena.exception.GetDocumentMegaSenaException;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,21 +11,17 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
-public class SaveResultMegaSenaUseCaseImpl implements SaveResultMegaSenaUseCase {
+public class GetDocumentMegaSenaUseCaseImpl implements GetDocumentMegaSenaUseCase {
 
     @Value("${lotericas.url.megasena}")
     private String urlMegaSena;
 
     @Override
-    public void execute(MegaSena megaSena) throws SaveResultMegaSenaException {
+    public Document execute() throws GetDocumentMegaSenaException {
         try {
-            Document doc = Jsoup.connect(urlMegaSena).get();
-
-
-
-
+            return Jsoup.connect(urlMegaSena).get();
         } catch (IOException e) {
-            throw new SaveResultMegaSenaException("Error Fatal in process crawler", e);
+            throw new GetDocumentMegaSenaException("Fatal Error in get document", e);
         }
     }
 
