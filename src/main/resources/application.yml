@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: test
+
+application:
+  title: Crawler Loterias BR
+  version: 1.0.0
+
+
+lotericas:
+  url:
+    megasena: https://loterias.caixa.gov.br/Paginas/Download-Resultados.aspx
