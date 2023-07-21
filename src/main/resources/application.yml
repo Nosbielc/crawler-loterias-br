@@ -7,6 +7,10 @@ application:
   version: 1.0.0
 
 
-lotericas:
-  url:
-    megasena: https://loterias.caixa.gov.br/Paginas/Download-Resultados.aspx
+loterica:
+  results:
+    megasena:
+      url: https://loterias.caixa.gov.br/Paginas/Mega-Sena.aspx
+      params:
+        id_button: "//*[@id=\"resultados\"]/div/ul/li/a"
+        id_table: "//*[@id=\"ctl50_g_cf05b8d5_fd75_46b5_bdfa_a623e654362c\"]/div/div/table/thead/tr/th[1]/small"

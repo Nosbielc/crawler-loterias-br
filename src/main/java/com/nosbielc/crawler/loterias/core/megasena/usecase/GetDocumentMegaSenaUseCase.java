@@ -1,10 +1,10 @@
 package com.nosbielc.crawler.loterias.core.megasena.usecase;
 
-import com.nosbielc.crawler.loterias.core.megasena.exception.GetDocumentMegaSenaException;
+import com.nosbielc.crawler.loterias.core.common.UseCaseBase;
 import org.jsoup.nodes.Document;
 
-public interface GetDocumentMegaSenaUseCase {
+import java.io.File;
 
-    Document execute() throws GetDocumentMegaSenaException;
+public interface GetDocumentMegaSenaUseCase  extends UseCaseBase<Document, String> {
 
 }

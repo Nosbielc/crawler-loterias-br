@@ -1,27 +1,33 @@
 package com.nosbielc.crawler.loterias.infrastructure.persistence.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Builder(toBuilder = true, builderClassName = "MegaSenaEntityBuilder", setterPrefix = "with")
+@Builder(toBuilder = true, builderClassName = "MegaSenaEntityBuilder")
 @Table(name = "mega_sena")
-public class MegaSenaEntity {
+public class MegaSenaEntity implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(insertable = false, updatable = false)
-    private Integer contest;
+    private Long id;
 
     @Column(nullable = false)
-    private String drawDate;
+    private Long contest;
+
+    @Column(nullable = false)
+    private LocalDate drawDate;
 
     @Column(nullable = false)
     private Integer drawNumber1;
