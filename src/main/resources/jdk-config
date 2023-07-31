@@ -1,0 +1,4 @@
+/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/lib/security/cacerts
+
+
+keytool -importcert -trustcacerts -alias repo -file loterias.caixa.gov.br.cer -keystore /Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/lib/security/cacerts -storepass changeit

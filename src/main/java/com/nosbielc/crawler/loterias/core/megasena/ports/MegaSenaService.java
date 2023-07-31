@@ -13,4 +13,6 @@ public interface MegaSenaService {
 
     Page<MegaSena> listPageable(Pageable pageable);
 
+    List<MegaSena> listAll();
+
 }

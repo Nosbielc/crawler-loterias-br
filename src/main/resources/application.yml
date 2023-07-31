@@ -10,7 +10,12 @@ application:
 loterica:
   results:
     megasena:
-      url: https://loterias.caixa.gov.br/Paginas/Mega-Sena.aspx
+      url: https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados/download?modalidade=Quina
       params:
         id_button: "//*[@id=\"resultados\"]/div/ul/li/a"
         id_table: "//*[@id=\"ctl50_g_cf05b8d5_fd75_46b5_bdfa_a623e654362c\"]/div/div/table/thead/tr/th[1]/small"
+
+crawler:
+  urls:
+    MEGASENA : 'https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados/download?modalidade=Mega-Sena'
+    QUINA : 'https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados/download?modalidade=Quina'

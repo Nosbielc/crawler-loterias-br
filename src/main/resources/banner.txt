@@ -50,3 +50,4 @@
                                                               `' /v"""' `""""""vVV\
 
  ${application.title}  Powered by Spring Boot ${spring-boot.version}
+

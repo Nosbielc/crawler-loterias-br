@@ -78,10 +78,7 @@ public class MegaSenaEntity implements Serializable {
     private BigDecimal accumulatedValueNextContest;
 
     @Column
-    private Boolean accumulated;
-
-    @Column
-    private Boolean specialDraw;
+    private BigDecimal specialDraw;
 
     @Column
     private String note;

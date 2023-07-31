@@ -1,10 +1,10 @@
 package com.nosbielc.crawler.loterias.infrastructure.delivery.impl;
 
-import com.nosbielc.crawler.loterias.core.megasena.usecase.ExecuteCrawlerMegaSenaUseCase;
-import com.nosbielc.crawler.loterias.core.megasena.usecase.GetPageableMegaSenaUseCase;
-import com.nosbielc.crawler.loterias.infrastructure.delivery.MegaSenaController;
-import com.nosbielc.crawler.loterias.infrastructure.delivery.converters.MegaSenaControllerMapper;
-import com.nosbielc.crawler.loterias.infrastructure.delivery.dtos.out.MegaSenaOutDto;
+import com.nosbielc.crawler.loterias.core.quina.usecase.ExecuteCrawlerQuinaUseCase;
+import com.nosbielc.crawler.loterias.core.quina.usecase.GetPageableQuinaUseCase;
+import com.nosbielc.crawler.loterias.infrastructure.delivery.QuinaController;
+import com.nosbielc.crawler.loterias.infrastructure.delivery.converters.QuinaControllerMapper;
+import com.nosbielc.crawler.loterias.infrastructure.delivery.dtos.out.QuinaOutDto;
 import com.nosbielc.crawler.loterias.infrastructure.delivery.responses.APIResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,27 +16,27 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/loterias/megasena")
-public class MegaSenaControllerImpl implements MegaSenaController {
+@RequestMapping("/api/v1/loterias/quina")
+public class QuinaControllerImpl implements QuinaController {
 
-    private final MegaSenaControllerMapper mapper;
-    private final ExecuteCrawlerMegaSenaUseCase executeCrawlerMegaSenaUseCase;
-    private final GetPageableMegaSenaUseCase getPageableMegaSenaUseCase;
+    private final QuinaControllerMapper mapper;
+    private final ExecuteCrawlerQuinaUseCase executeCrawlerQuinaUseCase;
+    private final GetPageableQuinaUseCase getPageableQuinaUseCase;
     @Override
     @PostMapping("/crawler")
     public ResponseEntity<String> crawler(@RequestParam("file") MultipartFile file) {
-        executeCrawlerMegaSenaUseCase.execute(file);
+        executeCrawlerQuinaUseCase.execute(file);
         return ResponseEntity.ok("Success");
     }
 
     @Override
     @GetMapping
     public APIResponse listPageable(@RequestParam(value = "pag", defaultValue = "0") Integer pag,
-                                                             @RequestParam(value = "ord", defaultValue = "contest") String ord,
+                                                             @RequestParam(value = "ord", defaultValue = "competition") String ord,
                                                              @RequestParam(value = "dir", defaultValue = "DESC") String dir,
                                                              @RequestParam(value = "size", defaultValue = "10") Integer size) {
-        Page<MegaSenaOutDto> megaSenaPageable =
-                getPageableMegaSenaUseCase.execute(PageRequest.of(pag, size, Sort.Direction.valueOf(dir), ord))
+        Page<QuinaOutDto> megaSenaPageable =
+                getPageableQuinaUseCase.execute(PageRequest.of(pag, size, Sort.Direction.valueOf(dir), ord))
                         .map(mapper::mapToOutRest);
 
         return APIResponse.builder()
