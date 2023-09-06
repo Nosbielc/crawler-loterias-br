@@ -12,8 +12,8 @@ import java.io.InputStream;
 import static com.nosbielc.crawler.loterias.core.megasena.constants.MegaSenaConstants.TYPE;
 
 
-@Component
 @Log4j2
+@Component
 @RequiredArgsConstructor
 public class SaveMultipartFileUseCaseImpl implements SaveMultipartFileUseCase {
     @SneakyThrows
